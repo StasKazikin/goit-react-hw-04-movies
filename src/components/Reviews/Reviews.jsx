@@ -19,12 +19,14 @@ const Reviews = ({ reviews }) => {
 };
 
 Reviews.propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequirred,
-      content: PropTypes.string.isRequirred,
-    })
+  credits: PropTypes.objectOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        author: PropTypes.string,
+        content: PropTypes.string.isRequirred,
+      })
+    )
   ),
 };
 

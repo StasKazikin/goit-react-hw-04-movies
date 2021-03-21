@@ -27,13 +27,15 @@ const Cast = ({ credits }) => {
 };
 
 Cast.propTypes = {
-  credits: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      profile_path: PropTypes.string.isRequirred,
-      name: PropTypes.string.isRequirred,
-      character: PropTypes.string.isRequired,
-    })
+  credits: PropTypes.objectOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        profile_path: PropTypes.string,
+        name: PropTypes.string.isRequirred,
+        character: PropTypes.string,
+      })
+    )
   ),
 };
 
