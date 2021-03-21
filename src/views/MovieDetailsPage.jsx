@@ -50,7 +50,7 @@ class MovieDetailsPage extends Component {
       credits,
       reviews,
     } = this.state;
-    const imgUrl = "http://image.tmdb.org/t/p/w300" + poster_path;
+    const imgUrl = `http://image.tmdb.org/t/p/w300${poster_path}`;
     const { url, path } = this.props.match;
     const usrScore = Number(vote_average) * 10;
 

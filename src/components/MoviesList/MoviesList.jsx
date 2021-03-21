@@ -1,4 +1,5 @@
 import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const MoviesList = ({ movies, location }) => {
   return (
@@ -18,6 +19,18 @@ const MoviesList = ({ movies, location }) => {
       ))}
     </ul>
   );
+};
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequirred,
+      name: PropTypes.string.isRequirred,
+      // location: PropTypes.string.isRequired,
+    })
+  ),
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(MoviesList);
