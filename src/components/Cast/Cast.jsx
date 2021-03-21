@@ -15,7 +15,7 @@ const Cast = ({ credits }) => {
                   alt={actor.name}
                   width="100"
                 />
-                <p>{actor.name}</p>
+                <h3>{actor.name}</h3>
                 <p>{actor.character}</p>
               </li>
             ))}

@@ -1,36 +1,17 @@
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HomePage from "./views/HomePage.jsx";
 import MoviesPage from "./views/MoviesPage.jsx";
 import MovieDetailsPage from "./views/MovieDetailsPage.jsx";
+import AppBar from "./components/AppBar";
+import routes from "./routes";
 
 const App = () => (
   <>
-    <ul>
-      <li>
-        <NavLink
-          exact
-          to="/"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/movies"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Movies
-        </NavLink>
-      </li>
-    </ul>
-
+    <AppBar />
     <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/movies/:movieId" component={MovieDetailsPage} />
-      <Route path="/movies" component={MoviesPage} />
+      <Route exact path={routes.home} component={HomePage} />
+      <Route path={routes.movieDetails} component={MovieDetailsPage} />
+      <Route path={routes.movie} component={MoviesPage} />
       <Route component={HomePage} />
     </Switch>
   </>

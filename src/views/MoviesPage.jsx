@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import MoviesList from "../components/MoviesList/MoviesList";
 
 class MoviesPage extends Component {
   state = {
@@ -38,17 +38,7 @@ class MoviesPage extends Component {
           />
           <button type="submit">Search</button>
         </form>
-
-        <ul>
-          {this.state.movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`${this.props.match.url}/${movie.id}`}>
-                {movie.title}
-                {movie.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MoviesList movies={this.state.movies} />
       </>
     );
   }

@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import MoviesList from "../components/MoviesList/MoviesList";
 
 class HomePage extends Component {
   state = {
@@ -21,16 +21,7 @@ class HomePage extends Component {
       <>
         <h1>Trending today</h1>
 
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                {movie.title}
-                {movie.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MoviesList movies={movies} />
       </>
     );
   }
