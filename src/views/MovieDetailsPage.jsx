@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink, Route } from "react-router-dom";
 import Cast from "../components/Cast";
 import Reviews from "../components/Reviews";
+import routes from "../routes";
 
 class MovieDetailsPage extends Component {
   state = {
@@ -27,6 +28,16 @@ class MovieDetailsPage extends Component {
       console.error(error);
     }
   }
+  handleGoBack = () => {
+    const { location, history } = this.props;
+
+    // if (location.state && location.state.from) {
+    //   return history.push(location.state.from);
+    // }
+    // history.push(routes.movies);
+
+    history.push(location?.state?.from || routes.movies);
+  };
 
   render() {
     const {
@@ -45,6 +56,9 @@ class MovieDetailsPage extends Component {
 
     return (
       <>
+        <button type="button" onClick={this.handleGoBack}>
+          Go back
+        </button>
         <img src={imgUrl} alt={title} />
         <h2>
           {title} ({release_date.slice(0, 4)})
