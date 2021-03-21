@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { NavLink, Route } from "react-router-dom";
+import Cast from "../components/Cast";
+import Reviews from "../components/Reviews";
 
 class MovieDetailsPage extends Component {
   state = {
@@ -8,33 +11,70 @@ class MovieDetailsPage extends Component {
     release_date: "",
     overview: null,
     genres: [],
+    credits: null,
+    reviews: null,
   };
 
   async componentDidMount() {
-    const { movieId } = this.props.match.params;
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=350384d7e97366c3ad316856e31f1b7b&language=en-US`
-    );
+    try {
+      const { movieId } = this.props.match.params;
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movieId}?api_key=350384d7e97366c3ad316856e31f1b7b&language=en-US&append_to_response=credits,reviews`
+      );
 
-    this.setState({ ...response.data });
+      this.setState({ ...response.data });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   render() {
-    const { poster_path, title, release_date, overview, genres } = this.state;
-    const imgUrl = "http://image.tmdb.org/t/p/w500" + poster_path;
+    const {
+      poster_path,
+      title,
+      release_date,
+      vote_average,
+      overview,
+      genres,
+      credits,
+      reviews,
+    } = this.state;
+    const imgUrl = "http://image.tmdb.org/t/p/w300" + poster_path;
+    const { url, path } = this.props.match;
+    const usrScore = Number(vote_average) * 10;
 
     return (
       <>
-        <img src={imgUrl} alt={this.state.title} />
+        <img src={imgUrl} alt={title} />
         <h2>
           {title} ({release_date.slice(0, 4)})
         </h2>
+        <p>
+          User Score: <span>{usrScore}%</span>
+        </p>
         <h3>Overview</h3>
         <p>{overview}</p>
         <h3>Genres</h3>
         {genres.map((genre) => (
           <span key={genre.name}>{genre.name} </span>
         ))}
+        <h3>Additional information</h3>
+        <ul>
+          <li>
+            <NavLink to={`${url}/cast`}>Cast</NavLink>
+          </li>
+          <li>
+            <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+          </li>
+        </ul>
+        <Route
+          path={`${path}/cast`}
+          render={() => <Cast credits={credits} />}
+        />
+        <Route
+          path={`${path}/reviews`}
+          render={() => <Reviews reviews={reviews} />}
+        />
       </>
     );
   }
