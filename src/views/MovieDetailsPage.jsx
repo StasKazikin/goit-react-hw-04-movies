@@ -56,23 +56,28 @@ class MovieDetailsPage extends Component {
 
     return (
       <>
-        <button type="button" onClick={this.handleGoBack}>
+        <button type="button" onClick={this.handleGoBack} className="goBackBtn">
           Go back
         </button>
-        <img src={imgUrl} alt={title} />
-        <h2>
-          {title} ({release_date.slice(0, 4)})
-        </h2>
-        <p>
-          User Score: <span>{usrScore}%</span>
-        </p>
-        <h3>Overview</h3>
-        <p>{overview}</p>
-        <h3>Genres</h3>
-        {genres.map((genre) => (
-          <span key={genre.name}>{genre.name} </span>
-        ))}
-        <h3>Additional information</h3>
+        <div className="thumb">
+          <img src={imgUrl} alt={title} className="poster" />
+          <div>
+            <h2>
+              {title} ({release_date.slice(0, 4)})
+            </h2>
+            <p>
+              User Score: <span>{usrScore}%</span>
+            </p>
+            <h3>Overview</h3>
+            <p>{overview}</p>
+            <h3>Genres</h3>
+            {genres.map((genre) => (
+              <span key={genre.name}>{genre.name} </span>
+            ))}
+          </div>
+        </div>
+
+        <h3 className="additionalInfoWrap">Additional information</h3>
         <ul>
           <li>
             <NavLink to={`${url}/cast`}>Cast</NavLink>

@@ -1,0 +1,105 @@
+body {
+  background-color: #fff;
+  color: #212121;
+  line-height: 1.5;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, "Open Sans", Ubuntu, Cantarell, sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Page Header
+.AppBar {
+  align-items: center;
+  min-height: 80px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.NavList {
+  display: flex;
+  list-style: none;
+  text-decoration: none;
+
+  .NavLink {
+    display: block;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
+    margin-right: 10px;
+    background-color: blue;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  .NavLink--active {
+    color: white;
+    background-color: red;
+  }
+}
+
+.container {
+  padding: 40px 20px;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-width: 340px;
+
+  .thumb {
+    display: flex;
+  }
+
+  .poster {
+    margin-right: 20px;
+  }
+
+  .goBackBtn {
+    padding: 7px 13px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 14px;
+    background-color: blue;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+}
+
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+
+  li {
+    margin: 5px;
+    width: 100px;
+
+    p {
+      font-size: 13px;
+    }
+  }
+}
+
+.additionalInfoWrap {
+  padding: 20px;
+  margin-bottom: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+
+  h3 {
+    margin-bottom: 20px;
+  }
+}

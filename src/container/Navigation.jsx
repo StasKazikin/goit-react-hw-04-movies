@@ -3,7 +3,7 @@ import routes from "../routes";
 
 const Navigation = () => {
   return (
-    <ul>
+    <ul className="NavList">
       <li>
         <NavLink
           exact

@@ -7,7 +7,7 @@ const Cast = ({ credits }) => {
   return (
     <>
       {credits && (
-        <ul>
+        <ul className="castList">
           {credits.cast &&
             credits.cast.map((actor) => (
               <li key={actor.id}>

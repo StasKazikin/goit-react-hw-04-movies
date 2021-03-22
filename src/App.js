@@ -18,14 +18,18 @@ const MovieDetailsPage = lazy(() =>
 const App = () => (
   <>
     <AppBar />
-    <Suspense fallback={<h1>Загружается...</h1>}>
-      <Switch>
-        <Route exact path={routes.home} component={HomePage} />
-        <Route path={routes.movieDetails} component={MovieDetailsPage} />
-        <Route path={routes.movie} component={MoviesPage} />
-        <Route component={HomePage} />
-      </Switch>
-    </Suspense>
+    <main>
+      <div className="container">
+        <Suspense fallback={<h1>Загружается...</h1>}>
+          <Switch>
+            <Route exact path={routes.home} component={HomePage} />
+            <Route path={routes.movieDetails} component={MovieDetailsPage} />
+            <Route path={routes.movie} component={MoviesPage} />
+            <Route component={HomePage} />
+          </Switch>
+        </Suspense>
+      </div>
+    </main>
   </>
 );
 
